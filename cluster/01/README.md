@@ -139,7 +139,8 @@ service isc-dhcp-server restart
 
 chattr -i /etc/resolv.conf
 sed -i '/nameserver/ i nameserver 11.0.0.1' /etc/resolv.conf
-sed -i 's/serach.*/serach master.cloud.com .' /etc/resolv.conf
+sed -i '/nameserver 11.0.0.1/ a\nameserver 8.8.8.8'
+sed -i 's/serach.*/serach master.cloud.com ./' /etc/resolv.conf
 chattr +i /etc/resolv.conf
 ```
 
