@@ -122,7 +122,7 @@ sed -i '/autorotive/ a\ddns-domainname "cloud.com";' /etc/dhcp/dhcpd.conf
 sed -i '/ddns-domainname "cloud.com"/ a\ddns-rev-domainname "in-addr.arpa";' /etc/dhcp/dhcpd.conf
 sed -i '/ddns-rev-domainname "in-addr.arpa"/ a\ddns-updates on;' /etc/dhcp/dhcpd.conf
 sed -i 's/option domain-name "example.org";/option domain-name "cloud.com";/' /etc/dhcp/dhcpd.conf
-sed -i "s/option domain-name-servers ns1.example.org, ns2.example.org;/option domain-name-servers 11.0.0.1, $CLOUD_HOST_IP;/" /etc/dhcp/dhcpd.conf
+sed -i "s/option domain-name-servers ns1.example.org, ns2.example.org;/option domain-name-servers 11.0.0.1, 192.168.0.1;/" /etc/dhcp/dhcpd.conf
 sed -i '/^max-lease-time 7200;/ a\subnet 11.0.0.0 netmask 255.255.255.0 {' /etc/dhcp/dhcpd.conf
 sed -i '/subnet 11.0.0.0 netmask 255.255.255.0 {/ a\option routers 11.0.0.1;'  /etc/dhcp/dhcpd.conf
 sed -i '/option routers 11.0.0.1;/ a\option subnet-mask 255.255.255.0;' /etc/dhcp/dhcpd.conf
@@ -139,7 +139,7 @@ service isc-dhcp-server restart
 
 chattr -i /etc/resolv.conf
 sed -i '/nameserver/ i nameserver 11.0.0.1' /etc/resolv.conf
-sed -i '/nameserver 11.0.0.1/ a\nameserver 8.8.8.8'
+sed -i '/nameserver 11.0.0.1/ a\nameserver 192.168.0.1'
 sed -i 's/serach.*/serach master.cloud.com ./' /etc/resolv.conf
 chattr +i /etc/resolv.conf
 ```
