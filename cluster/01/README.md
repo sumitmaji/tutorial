@@ -1,4 +1,5 @@
 
+### DNS
 ```shell
 apt-get update
 apt-get install net-tools
@@ -150,4 +151,39 @@ chmod 775 -R /etc/bind
 chown -R bind /etc/bind
 service bind9 restart
 service isc-dhcp-server restart
+```
+
+### NAT
+```shell
+echo "1" > /proc/sys/net/ipv4/ip_forward
+sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
+iptables -t nat -A POSTROUTING -o enp0s8 -j MASQUERADE
+iptables-save > /etc/iptables.rules
+```
+
+### NFS
+```shell
+apt-get install -y nfs-kernel-server
+```
+
+```shell
+echo "/export 11.0.0.0/24(rw,async,no_root_squash)" >> /etc/exports
+mkdir -p /export
+chmod 777 /export
+exportfs -va
+systemctl start nfs-kernel-server
+systemctl enable nfs-kernel-server
+mount 11.0.0.1:/export /export
+```
+
+### NTP
+```shell
+sed -i '/^restrict ::1$/a\ restrict 11.0.0.0 mask 255.255.255.0 nomodify notrap' /etc/ntp.conf
+service ntp start
+```
+
+```shell
+echo 'export MOUNT_PATH=/export' >> /etc/bash.bashrc
+echo 'iptables -P FORWARD ACCEPT' >> /root/.bashrc
+echo 'pre-up iptables-restore < /etc/iptables.rules' >> /root/.bashrc
 ```
