@@ -28,7 +28,7 @@ EOF
 ```
 
 ```shell
-netpaln apply
+netplan apply
 ```
 
 ```shell
@@ -140,7 +140,7 @@ service isc-dhcp-server restart
 
 chattr -i /etc/resolv.conf
 sed -i '/nameserver/ i nameserver 11.0.0.1' /etc/resolv.conf
-sed -i '/nameserver 11.0.0.1/ a\nameserver 192.168.0.1'
+sed -i '/nameserver 11.0.0.1/ a\nameserver 192.168.0.1' /etc/resolv.conf
 sed -i 's/serach.*/serach cloud.com ./' /etc/resolv.conf
 chattr +i /etc/resolv.conf
 ```
