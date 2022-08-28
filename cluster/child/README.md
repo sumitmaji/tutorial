@@ -26,6 +26,14 @@ echo "send fqdn.server-update off;" >> /etc/dhcp/dhclient-enp0s3.conf
 echo "also request fqdn.fqdn;" >> /etc/dhcp/dhclient-enp0s3.conf
 ```
 
+```shell
+chattr -i /etc/resolv.conf
+sed -i '/nameserver/ i nameserver 11.0.0.1' /etc/resolv.conf
+sed -i '/nameserver 11.0.0.1/ a\nameserver 192.168.0.1' /etc/resolv.conf
+sed -i 's/serach.*/serach cloud.com ./' /etc/resolv.conf
+chattr +i /etc/resolv.conf
+```
+
 ### NTP
 
 ```shell

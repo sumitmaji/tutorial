@@ -159,6 +159,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
 iptables -t nat -A POSTROUTING -o enp0s8 -j MASQUERADE
 iptables-save > /etc/iptables.rules
+sed -i '$a pre-up iptables-restore < /etc/iptables.rules' /etc/network/interfaces
 ```
 
 ### NFS
@@ -185,5 +186,4 @@ service ntp start
 ```shell
 echo 'export MOUNT_PATH=/export' >> /etc/bash.bashrc
 echo 'iptables -P FORWARD ACCEPT' >> /root/.bashrc
-echo 'pre-up iptables-restore < /etc/iptables.rules' >> /root/.bashrc
 ```
