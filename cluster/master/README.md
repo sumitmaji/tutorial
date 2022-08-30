@@ -154,7 +154,10 @@ service isc-dhcp-server restart
 
 ### NAT
 ```shell
-apt-get install -y iptables-persistent
+apt-get install -y iptables-persistent <<EOF
+YES
+YES
+EOF
 echo "1" > /proc/sys/net/ipv4/ip_forward
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
 iptables -t nat -A POSTROUTING -o enp0s8 -j MASQUERADE
