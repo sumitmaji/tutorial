@@ -9,7 +9,6 @@ DC_2=com
 DC=dc=cloud,dc=com
 BASE_DN=dc=cloud,dc=com
 LDAP_HOSTNAME=master.cloud.com
-KDC_ADDRESS=master.cloud.com
 LDAP_HOST=ldap://master.cloud.com
 ENABLE_SSL=false
 ENABLE_KUBERNETES=false
