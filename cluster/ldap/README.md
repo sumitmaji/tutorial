@@ -182,10 +182,6 @@ echo '502' >/var/groupid
 
 : ${REALM:=$(echo $DOMAIN_NAME | tr 'a-z' 'A-Z')}
 : ${DOMAIN_REALM:=$DOMAIN_NAME}
-: ${KERB_MASTER_KEY:=masterkey}
-: ${KERB_ADMIN_USER:=root}
-: ${KERB_ADMIN_PASS:=$(</etc/secret/krb/password)}
-: ${KDC_ADDRESS:=$KDC_ADDRESS}
 : ${LDAP_HOST:=$LDAP_HOST}
 : ${BASE_DN:=$DC}
 : ${LDAP_PASSWORD:=$(</etc/secret/ldap/password)}
