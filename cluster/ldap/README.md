@@ -19,6 +19,11 @@ LDAP_ORG=CloudInc
 
 ```shell
 
+apt-get update
+```
+
+```shell
+
 echo "slapd slapd/internal/adminpw password ${LDAP_PASSWORD}" | debconf-set-selections
 echo "slapd slapd/internal/generated_adminpw password ${LDAP_PASSWORD}" | debconf-set-selections
 echo "slapd slapd/password2 password ${LDAP_PASSWORD}" | debconf-set-selections
