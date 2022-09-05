@@ -19,6 +19,10 @@ LDAP_ORG=CloudInc
 ```
 
 ```shell
+apt-get update
+```
+
+```shell
 
 echo "ldap-auth-config ldap-auth-config/rootbindpw password ${LDAP_PASSWORD}" | debconf-set-selections
 echo "ldap-auth-config ldap-auth-config/bindpw password ${LDAP_PASSWORD}" | debconf-set-selections
