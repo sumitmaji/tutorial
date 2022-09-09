@@ -2,20 +2,23 @@
 
 
 ```shell
-DOMAIN_NAME=master.cloud.com
-LDAP_DOMAIN=master.cloud.com
-DC_1=master.cloud
+DOMAIN_NAME=cloud.com
+LDAP_DOMAIN=cloud.com
+DC_1=cloud
 DC_2=com
-DC=dc=master,dc=cloud,dc=com
-BASE_DN=dc=master,dc=cloud,dc=com
+DC=dc=cloud,dc=com
+BASE_DN=dc=cloud,dc=com
 LDAP_HOSTNAME=master.cloud.com
-KDC_ADDRESS=master.cloud.com
 LDAP_HOST=ldap://master.cloud.com
 ENABLE_SSL=false
 ENABLE_KUBERNETES=false
 LDAP_PASSWORD=sumit
 DEBIAN_FRONTEND=noninteractive
 LDAP_ORG=CloudInc
+```
+
+```shell
+apt-get update
 ```
 
 ```shell
